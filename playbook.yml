@@ -5,9 +5,6 @@
   vars_files:
     - vars/vars.yml
   tasks:
-    # - name: pip
-    #state: latest
-
   - name: Check for Python
     raw: test -e /usr/bin/python
     changed_when: false
@@ -46,7 +43,6 @@
 
   - name: Configure AWS.
     shell: aws configure set {{ item.key }} {{ item.value }} --profile {{ aws_profile }}
-      #no_log:   true
     with_dict:
        aws_access_key_id: "{{ aws_access_key }}"
        aws_secret_access_key: "{{ aws_secret_key }}"
@@ -54,8 +50,3 @@
        format: "{{ aws_format }}"
     become_user: "{{ aws_system_user }}"
     changed_when: false
-
-      #- name: Configure AWS.
-      #template:
-      #src: aws_credentials.tpl
-      #dest: "~/.aws/credentials"
