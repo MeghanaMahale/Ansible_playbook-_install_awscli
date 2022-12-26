@@ -15,6 +15,12 @@ pipeline {
           }
         }
 
+        stage('') {
+          steps {
+            sh ' ansible-playbook -i --tags=tag1 playbook.yml'
+          }
+        }
+
       }
     }
 
