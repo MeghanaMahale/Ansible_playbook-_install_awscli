@@ -36,7 +36,7 @@ pipeline {
 
           }
           steps {
-            sh '''cd /workspace/_playbook-_install_awscli_master
+            sh '''cd /home/ubuntu/workspace/_playbook-_install_awscli_master/
 ansible-playbook -i inventories/hosts playbook.yml --tags "tag2"
 '''
           }
