@@ -34,6 +34,19 @@ pipeline {
           }
         }
 
+        stage('tag2') {
+          agent {
+            node {
+              label 'ansible'
+            }
+
+          }
+          steps {
+            sh '''ansible-playbook -i inventories/hosts playbook.yml --tags "tag2"
+'''
+          }
+        }
+
       }
     }
 
