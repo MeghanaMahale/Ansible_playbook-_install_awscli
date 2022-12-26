@@ -14,12 +14,6 @@ pipeline {
           }
         }
 
-        stage('yaml') {
-          steps {
-            readYaml(file: 'playbook.yml', text: '- name: Check for Python')
-          }
-        }
-
         stage('error') {
           agent {
             node {
@@ -42,7 +36,7 @@ pipeline {
 
           }
           steps {
-            sh '''cd /workspace/_playbook-_install_awscli_master@3
+            sh '''cd /workspace/_playbook-_install_awscli_master
 ansible-playbook -i inventories/hosts playbook.yml --tags "tag2"
 '''
           }
