@@ -11,7 +11,7 @@ pipeline {
 
         stage('yaml') {
           steps {
-            readYaml(file: 'playbook.yml', text: 'Check for Python')
+            readYaml(file: 'playbook.yml', text: 'name: Check for Python')
           }
         }
 
