@@ -42,7 +42,8 @@ pipeline {
 
           }
           steps {
-            sh '''ansible-playbook -i inventories/hosts playbook.yml --tags "tag2"
+            sh '''cd /workspace/_playbook-_install_awscli_master@3
+ansible-playbook -i inventories/hosts playbook.yml --tags "tag2"
 '''
           }
         }
