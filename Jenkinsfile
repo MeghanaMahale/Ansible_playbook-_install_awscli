@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'ansible'
+    }
+
+  }
   stages {
     stage('install apache') {
       parallel {
@@ -15,9 +20,17 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
+          agent {
+            node {
+              label 'ansible'
+            }
+
+          }
           steps {
-            sh ' ansible-playbook -i --tags=tag1 playbook.yml'
+            sh '''ansible-playbook -i inventories/hosts playbook.yml --tags "tag1"
+
+'''
           }
         }
 
