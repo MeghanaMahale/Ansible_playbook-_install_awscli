@@ -10,12 +10,14 @@
     changed_when: false
     failed_when: false
     register: check_python
+    tags: tag1
 
   - name: install python3
     apt:
        name: python3
        state: present
     when: check_python.rc != 0
+    tags: tag2
 
   - name: Install package dependencies.
     package: name={{ item }} state=present
